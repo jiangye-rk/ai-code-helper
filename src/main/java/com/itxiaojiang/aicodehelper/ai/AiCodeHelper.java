@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class AiCodeHelper {
     @Resource
-    private ChatModel qwenChatModel;
+    private ChatModel myQwenChatModel;
 
     public String chat(String message){
         UserMessage userMessage = UserMessage.from(message);
-        ChatResponse chatResponse = qwenChatModel.chat(userMessage);
+        ChatResponse chatResponse = myQwenChatModel.chat(userMessage);
         AiMessage aiMessage = chatResponse.aiMessage();
         log.info("AI输出："+aiMessage.toString());
         return aiMessage.text();
